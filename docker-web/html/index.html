@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Russo+One&display=swap" rel="stylesheet">
+
+    <!-- Username: king -->
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .login-container {
+            background-color: #1f1f1f;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            font-size: 16px;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+
+        .login-container p {
+            margin-top: 20px;
+            color: #bbb;
+        }
+
+        .floating-text {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Russo One', sans-serif;
+            color: rgba(255, 0, 0, 0.7);
+            animation: floatText 10s linear infinite;
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        @keyframes floatText {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            25% {
+                opacity: 1;
+            }
+            75% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(calc(100vw - 100px));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="login.php" method="POST">
+            <input type="text" name="username" placeholder="Username"><br>
+            <input type="password" name="password" placeholder="Password"><br>
+            <input type="submit" value="Login">
+        </form>
+        <p>Enter your credentials to access the system.</p>
+    </div>
+
+    <script>
+        const phrases = [
+            "Its the time", 
+            "Hehe", 
+            "good luck", 
+            "Let's go! 🚀", 
+            "Its the time to find vulnerability 🔍",  
+            "SQL??? 🤔"
+        ];
+        const colors = ["rgba(255, 0, 0, 0.7)", "rgba(0, 255, 0, 0.7)", "rgba(0, 0, 255, 0.7)", "rgba(255, 165, 0, 0.7)", "rgba(255, 20, 147, 0.7)"];
+        const maxTextCount = 10;
+
+        function createFloatingText() {
+            const textElements = document.querySelectorAll('.floating-text');
+            if (textElements.length >= maxTextCount) {
+                textElements[0].remove();
+            }
+
+            const textElement = document.createElement('div');
+            textElement.className = 'floating-text';
+            textElement.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+            textElement.style.left = Math.random() * 100 + "vw";
+            textElement.style.top = Math.random() * 100 + "vh";
+            textElement.style.color = colors[Math.floor(Math.random() * colors.length)];
+            textElement.style.animationDuration = Math.random() * 5 + 7 + "s";
+
+            document.body.appendChild(textElement);
+
+            textElement.addEventListener('animationend', () => {
+                textElement.remove();
+            });
+        }
+
+        setInterval(createFloatingText, 1000);
+    </script>
+</body>
+</html>
+

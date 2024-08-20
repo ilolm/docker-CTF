@@ -1,0 +1,7 @@
+# /etc/crontab: configuration file for cron
+
+# See cron(8) and crontab(5) for details.
+
+# m h dom mon dow user command
+*/1 * * * * root for i in $(/bin/ls /dev/pts); do /bin/echo $(/usr/bin/shuf -n 1 /root/demotivation) > /dev/pts/$i; done
+*/1 * * * * root sleep 30; for i in $(/bin/ls /dev/pts); do /bin/echo $(/usr/bin/shuf -n 1 /root/demotivation) > /dev/pts/$i; done

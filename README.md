@@ -1,6 +1,6 @@
-# Docker-CTF
+# Docker-in-Docker CTF
 
-🎯 **Docker-CTF** is a Capture The Flag challenge that can be deployed using Docker or as a VirtualBox image. Follow the instructions below to set up and start playing!
+🎯 **Docker-in-Docker CTF** is a Capture The Flag challenge that can be deployed using Docker or as a VirtualBox image. Follow the instructions below to set up and start playing!
 
 ---
 

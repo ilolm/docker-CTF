@@ -32,6 +32,14 @@ RUN chmod 0400 /home/king/user.txt && chown king:king /home/king/user.txt
 COPY ./docker-web /home/king/docker-web
 RUN chmod 0755 /home/king/docker-web && chown -R root:root /home/king/docker-web
 
+# Privileges
+RUN chmod 0700 /home/king/docker-web/.ssh.tar
+RUN chmod 0400 -R /home/king/docker-web/flags
+RUN chmod 0640 /home/king/docker-web/sudoers
+RUN mkdir /home/king/docker-web/html/logs && chmod 0777 /home/king/docker-web/html/logs
+RUN chmod 700 /home/king/docker-web/.ssh.tar
+
+
 EXPOSE 22
 EXPOSE 23
 EXPOSE 3306

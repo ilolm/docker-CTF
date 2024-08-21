@@ -26,7 +26,7 @@ sudo docker image pull ilolm/docker-ctf
 Then, run the Docker container with the following commands:
 
 ```bash
-sudo docker container run -itd --rm --privileged --hostname ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 ilolm/docker-ctf
+sudo docker container run -itd --rm --privileged --hostname docker-ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 ilolm/docker-ctf
 sudo docker container exec -it docker-ctf docker compose -f /home/king/docker-web/docker-compose.yaml up -d
 ```
 
@@ -52,7 +52,7 @@ If you prefer to build the Docker image yourself, follow these steps:
 3. Run the Docker container:
 
     ```bash
-    sudo docker container run -itd --rm --privileged --hostname ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 ctf
+    sudo docker container run -itd --rm --privileged --hostname docker-ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 ctf
     ```
 
 4. Start the internal Docker Compose services:

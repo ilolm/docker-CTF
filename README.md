@@ -6,7 +6,16 @@
 
 ## 🚀 Deployment Options
 
-### 1. 🐳 Download Prebuilt Docker Image
+### 1. 🎓 TryHackMe
+
+Complete this CTF on TryHackMe:
+
+- Join the room [here](https://tryhackme.com/jr/docker-ctf).
+- Launch the provided machine and start solving the challenge.
+
+---
+
+### 2. 🐳 Download Prebuilt Docker Image
 
 If you prefer a quick setup, you can download the prebuilt Docker image from Docker Hub:
 
@@ -23,7 +32,7 @@ sudo docker container exec -it docker-ctf docker compose -f /home/king/docker-we
 
 ---
 
-### 2. 🔧 Build the Docker Image manually
+### 3. 🔧 Build the Docker Image manually
 
 If you prefer to build the Docker image yourself, follow these steps:
 
@@ -54,7 +63,7 @@ If you prefer to build the Docker image yourself, follow these steps:
 
 ---
 
-### 3. 💻 VirtualBox Image
+### 4. 💻 VirtualBox Image
 
 Alternatively, you can deploy the CTF using a VirtualBox image:
 

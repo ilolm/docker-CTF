@@ -25,8 +25,8 @@ RUN ln -sf /dev/null /home/king/.bash_history
 # flags
 COPY ./main_flags/root.txt /root/root.txt
 COPY ./main_flags/user.txt /home/king/user.txt
-RUN chmod 0400 /root/root.txt && chown root:root /root/root.txt
-RUN chmod 0400 /home/king/user.txt && chown king:king /home/king/user.txt
+RUN chown root:root /root/root.txt && chmod 0400 /root/root.txt
+RUN chown king:king /home/king/user.txt && chmod 0400 /home/king/user.txt
 
 # Copying main files
 COPY ./docker-web /home/king/docker-web
@@ -37,7 +37,6 @@ RUN chmod 0700 /home/king/docker-web/.ssh.tar
 RUN chmod 0400 -R /home/king/docker-web/flags
 RUN chmod 0640 /home/king/docker-web/sudoers
 RUN mkdir /home/king/docker-web/html/logs && chmod 0777 /home/king/docker-web/html/logs
-RUN chmod 700 /home/king/docker-web/.ssh.tar
 
 
 EXPOSE 22

@@ -25,12 +25,12 @@ RUN ln -sf /dev/null /home/king/.bash_history
 # flags
 COPY ./main_flags/root.txt /root/root.txt
 COPY ./main_flags/user.txt /home/king/user.txt
-RUN chmod 0400 /root/root.txt
+RUN chmod 0400 /root/root.txt && chown root:root /root/root.txt
 RUN chmod 0400 /home/king/user.txt && chown king:king /home/king/user.txt
 
 # Copying main files
 COPY ./docker-web /home/king/docker-web
-RUN chmod 0755 /home/king/docker-web
+RUN chmod 0755 /home/king/docker-web && chown -R root:root /home/king/docker-web
 
 EXPOSE 22
 EXPOSE 23

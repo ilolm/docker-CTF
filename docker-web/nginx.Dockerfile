@@ -1,27 +1,22 @@
 FROM nginx:latest
 
 # Installing needed software
-RUN apt update
-RUN apt install -y sudo nano openssh-server cron ncat net-tools
+RUN apt-get update && \
+    apt-get install -y sudo nano openssh-server cron ncat net-tools
 
-# Adding users
-RUN useradd -m gleb
-RUN useradd -m rebeca
-
-# Adding passwords
-RUN echo "gleb:36bfX1mATPcFyVzWX2y0cRf930k=" | chpasswd
-RUN echo rebeca:$(openssl rand -base64 20) | chpasswd
+# Adding users | passwords | .bash_history > /dev/null
+RUN useradd -m gleb && useradd -m rebeca && \
+    echo "gleb:36bfX1mATPcFyVzWX2y0cRf930k=" | chpasswd && \
+    echo rebeca:$(openssl rand -base64 20) | chpasswd && \
+    ln -sf /dev/null /home/gleb/.bash_history && \
+    ln -sf /dev/null /home/rebeca/.bash_history && \
+    ln -sf /dev/null /root/.bash_history
 
 # for ssh
-RUN mkdir /var/run/sshd
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
 ADD ./.ssh.tar /home/rebeca/
-RUN chmod 700 -R /home/rebeca/.ssh && chown rebeca:rebeca -R /home/rebeca/.ssh
-
-# .bash_history > /dev/null
-RUN ln -sf /dev/null /home/gleb/.bash_history
-RUN ln -sf /dev/null /home/rebeca/.bash_history
-RUN ln -sf /dev/null /root/.bash_history
+RUN mkdir -p /var/run/sshd && \
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config && \
+    chmod 700 -R /home/rebeca/.ssh && chown rebeca:rebeca -R /home/rebeca/.ssh
 
 # FLAGS
 COPY --chown=gleb:gleb --chmod=600 ./flags/gleb.txt /home/gleb/gleb.txt
@@ -33,17 +28,15 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY ./html /home/gleb/html
 COPY --chmod=644 ./crontab /etc/crontab
 COPY --chmod=644 ./demotivation /root/demotivation
-RUN crontab /etc/crontab
 COPY --chown=root:root --chmod=440 ./sudoers /etc/sudoers
 
-RUN chown rebeca:root /usr/bin/find
-RUN chmod u+s /usr/bin/find
+RUN crontab /etc/crontab && \
+    chown rebeca:root /usr/bin/find && \
+    chmod u+s /usr/bin/find && \
+    chown gleb:gleb -R /home/gleb/html && \
+    chown root:root /home/gleb/html/logs && chmod 777 /home/gleb/html/logs
 
-RUN chown gleb:gleb -R /home/gleb/html
-RUN chown root:root /home/gleb/html/logs && chmod 777 /home/gleb/html/logs
+EXPOSE 8080 22
 
-EXPOSE 8080
-EXPOSE 22
-
+# cron doesn't run anyway, I need to run it explicitly every time container starts..
 CMD service ssh start && nginx -g 'daemon off;' && service cron start
-# cron doesn't run anyway, I need to run it explicitly every time container starts.. 

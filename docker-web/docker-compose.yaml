@@ -28,7 +28,7 @@ services:
             - ./html/logs:/var/www/html/logs
 
     mysql:
-        image: mysql:latest
+        image: mysql:8.0.40-debian
         container_name: mysql
         restart: unless-stopped
         ports:

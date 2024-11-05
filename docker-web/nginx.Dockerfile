@@ -1,4 +1,4 @@
-FROM nginx:mainline-alpine3.20-slim
+FROM nginx:1.27.2
 
 # Installing needed software
 RUN apt-get update && \

@@ -15,5 +15,4 @@ docker image load -i /docker-images/php-fpm.tar
 # Cleaning images
 rm -rf /docker-images
 
-# starting docker compose
-docker compose -f /home/king/docker-web/docker-compose.yaml up
+exec "$@"

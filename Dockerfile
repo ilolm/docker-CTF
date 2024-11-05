@@ -49,5 +49,5 @@ EXPOSE 22 23 3306 8080
 
 COPY ./entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 CMD ["docker", "compose", "-f", "/home/king/docker-web/docker-compose.yaml", "up"]

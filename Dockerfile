@@ -30,8 +30,8 @@ COPY ./main_flags/root.txt /root/root.txt
 COPY ./main_flags/user.txt /home/king/user.txt
 COPY ./docker-web /home/king/docker-web
 
-# Copying docker images
-COPY ["./docker-images/nginx.tar", "./docker-images/php-fpm.tar", "/docker-images/"]
+# Copying php docker image
+COPY ["./docker-images/php-fpm.tar", "/docker-images/"]
 
 RUN echo "Permissions for flags" \
     && chown root:root /root/root.txt && chmod 0400 /root/root.txt \

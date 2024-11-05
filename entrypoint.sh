@@ -6,8 +6,7 @@ set -e
 dockerd > /dev/null 2>&1 &
 /usr/sbin/sshd -D > /dev/null 2>&1 &
 
-# Adding images
-docker image load -i /docker-images/nginx.tar
+# Adding php image
 docker image load -i /docker-images/php-fpm.tar
 
 # Cleaning images

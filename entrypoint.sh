@@ -14,3 +14,6 @@ docker image load -i /docker-images/php-fpm.tar
 
 # Cleaning images
 rm -rf /docker-images
+
+# Executing CMD statement
+exec "$@"

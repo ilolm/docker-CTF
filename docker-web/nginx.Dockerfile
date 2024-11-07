@@ -2,7 +2,12 @@ FROM nginx:1.27.2
 
 # Installing needed software
 RUN apt-get update && \
-    apt-get install -y sudo nano openssh-server cron ncat net-tools
+    apt-get install -y sudo nano openssh-server cron ncat net-tools && \
+
+    echo "Cleaning cache" \
+    && apt-get autoremove \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Adding users | passwords | .bash_history > /dev/null
 RUN useradd -m gleb && useradd -m rebeca && \
@@ -39,4 +44,5 @@ RUN crontab /etc/crontab && \
 EXPOSE 8080 22
 
 # cron doesn't run anyway, I need to run it explicitly every time container starts..
-CMD service ssh start && nginx -g 'daemon off;' && service cron start
+CMD service ssh start && service cron start && nginx -g 'daemon off;'
+

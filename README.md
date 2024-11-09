@@ -15,20 +15,23 @@ Complete this CTF on TryHackMe:
 
 ---
 
-### 2. 🐳 Download Prebuilt Docker Image
+### 2. 🐳 Prebuilt Docker Image *(Recommended)*
 
-If you prefer a quick setup, you can download the prebuilt Docker image from Docker Hub:
+1. Pull docker-ctf image from Docker-Hub
 
 ```bash
 sudo docker image pull ilolm/docker-ctf
 ```
 
-Then, run the Docker container with the following commands:
+2. Then, run the Docker container with the following command:
 
 ```bash
-sudo docker container run -itd --rm --privileged --hostname docker-ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 ilolm/docker-ctf
-sudo docker container exec -it docker-ctf docker compose -f /home/king/docker-web/docker-compose.yaml up -d
+sudo docker container run -it --rm --privileged --hostname docker-ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 ilolm/docker-ctf
 ```
+
+3. After that wait for internal docker compose to be deployed.
+
+*Note: If you use -d option(you will not see the docker compose deployment progress)*
 
 ---
 
@@ -46,20 +49,19 @@ If you prefer to build the Docker image yourself, follow these steps:
 2. Build the Docker image:
 
     ```bash
-    sudo docker image build -t ctf:latest .
+    sudo docker image build -t docker-ctf:latest .
     ```
 
 3. Run the Docker container:
 
     ```bash
-    sudo docker container run -itd --rm --privileged --hostname docker-ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 ctf
+    sudo docker container run -itd --rm --privileged --hostname docker-ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 docker-ctf
     ```
 
-4. Start the internal Docker Compose services:
+4. After that wait for internal docker compose to be deployed.
 
-    ```bash
-    sudo docker container exec -it docker-ctf docker compose -f /home/king/docker-web/docker-compose.yaml up -d
-    ```
+*Note: If you use -d option(you will not see the docker compose deployment progress)*
+
 
 ---
 

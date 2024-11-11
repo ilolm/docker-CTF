@@ -55,7 +55,7 @@ If you prefer to build the Docker image yourself, follow these steps:
 3. Run the Docker container:
 
     ```bash
-    sudo docker container run -itd --rm --privileged --hostname docker-ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 docker-ctf
+    sudo docker container run -it --rm --privileged --hostname docker-ctf --name docker-ctf -p 8080:8080 -p 22:22 -p 23:23 -p 3306:3306 docker-ctf
     ```
 
 4. After that wait for internal docker compose to be deployed.

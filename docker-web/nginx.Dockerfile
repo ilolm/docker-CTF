@@ -43,6 +43,5 @@ RUN crontab /etc/crontab && \
 
 EXPOSE 8080 22
 
-# cron doesn't run anyway, I need to run it explicitly every time container starts..
 CMD service ssh start && service cron start && nginx -g 'daemon off;'
 

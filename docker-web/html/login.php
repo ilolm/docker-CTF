@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(0);
+ini_set('display_errors', 0);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'] ?? '';
@@ -8,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn = new mysqli('mysql', 'root', 'ZXGPK9tk7s0RPqp3Q8d1Hy5MZRw=', 'webchik');
 
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        die("Waiting for DB to initialize.");
     }
 
     $passwordHash = md5($conn->real_escape_string($password));

@@ -24,6 +24,8 @@ services:
             dockerfile: php-fpm.Dockerfile
         container_name: php-fpm
         restart: unless-stopped
+        depends_on:
+            - mysql
         volumes:
             - ./html/logs:/var/www/html/logs
 

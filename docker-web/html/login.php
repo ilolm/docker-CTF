@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['username'] = $username;
         $logMessage .= "Status: SUCCESS\n";
         file_put_contents($logFile, $logMessage, FILE_APPEND);
-        $message = "Welcome $username, I remind you our new Database credentials:\nroot:ZXGPK9tk7s0RPqp3Q8d1Hy5MZRw=";
+        $message = "Hi $username, I remind you about our new Database credentials:\nroot:ZXGPK9tk7s0RPqp3Q8d1Hy5MZRw=";
         $messageClass = 'success';
     } else {
         $logMessage .= "Status: FAILURE\n";

@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /
 
-<--!Try sql injection-->
+<--!Hey king, recently, I have found some SQL injection vulns in our login form, could you fix them please, Gleb.-->
